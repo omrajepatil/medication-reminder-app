@@ -22,6 +22,31 @@ export const logAcknowledgment = async (req, res) => {
 
     res.status(201).json({status: true,message: "Acknowledgment logged successfully",data: acknowledgment});
   } 
+
   catch (error) {res.status(500).json({status: false,message: "Error logging acknowledgment",error: error.message,});
   }
 };
+
+
+
+export const getLogData = async(req,res)=>{
+    try{
+        const response = await AcknowledgmentLog.findAll();
+        res.status(201).json({status:true,message:"data fetched successfully" , data:response})
+    }
+    catch(error){
+        res.status(500).json({status:false,message:"Error fetching data",error:error.message})
+    }
+}
+
+
+export const getById = async(req,res)=>{
+    try{
+        const {id} = req.params;
+        const response = await AcknowledgmentLog.findAll({where:{id}});
+        res.status(201).json({status:true,message:"data fetched successfully" , data:response})
+    }
+    catch(error){
+        res.status(500).json({status:false,message:"Error fetching data",error:error.message})
+    }
+}
