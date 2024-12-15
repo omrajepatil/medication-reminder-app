@@ -7,8 +7,8 @@ import bcrypt from 'bcrypt'
 
 
 
-const createToken = (role)=>{
-    return jwt.sign({ role }, process.env.SECRET_KEY, { expiresIn: '1d'})
+const createToken = (id,role)=>{
+    return jwt.sign({ id,role }, process.env.SECRET_KEY, { expiresIn: '1d'})
 }
 
 // Function to create a new user
@@ -43,7 +43,7 @@ export const createUser = async (req, res) => {
         });
 
 
-        const token = createToken(newUser.role)
+        const token = createToken(newUser.id,newUser.role)
 
         res.status(201).json({ message: 'User created successfully', data: newUser,token });
     } catch (error) {
@@ -79,7 +79,7 @@ export const login = async (req, res) => {
         }
 
         // Create a token
-        const token = createToken(user.role);
+        const token = createToken(user.id,user.role);
 
         // Return response excluding sensitive fields
         const { id, name, role } = user;

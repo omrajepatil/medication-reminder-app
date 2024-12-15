@@ -3,6 +3,8 @@ import sequelize from './config/connection.js'
 import './models/user.js'
 import userRouter from './routes/user.js';
 import dotenv from 'dotenv'
+import medicineRouter from './routes/medicine.js';
+import logRouter from './routes/acknowledgementRoute.js';
 
 const app = express();
 
@@ -14,7 +16,11 @@ app.use(express.json());
 
 app.use('/api/user',userRouter);
 
-sequelize.sync({alter:true}).then(()=>{
+app.use('/api/medicine',medicineRouter);
+
+app.use('/api/log', logRouter);
+
+sequelize.sync().then(()=>{
     console.log('Database connected and synchronized');
     app.listen(port, () => console.log(`Server running on port ${port}`));
 })
