@@ -2,6 +2,8 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Login';
+import MedicalFormPage from './pages/medicine';
+import AdminPage from './pages/admin';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -35,7 +37,12 @@ import '@ionic/react/css/core.css';
 
 setupIonicReact();
 
+const  role = localStorage.getItem('role');
+
 const App: React.FC = () => (
+
+
+
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
@@ -44,6 +51,13 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/">
           <Redirect to="/home" />
+        </Route>
+        <Route exact path="/user">
+        {/* {role === 'user' ? <MedicalFormPage /> : <Redirect to="/home" />} */}
+        <MedicalFormPage />
+        </Route>
+        <Route exact path="/admin">
+          <AdminPage />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

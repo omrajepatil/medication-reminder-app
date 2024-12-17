@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import {
-  IonButton,
-  IonContent,
-  IonPage,
-  IonInput,
-  IonLabel,
-  IonItem,
-  IonSelect,
-  IonSelectOption,
+import {IonButton,IonContent,IonPage,IonInput,IonLabel,IonItem,IonSelect,IonSelectOption,
 } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
 import { login, register } from '../services/LoginServices'; // Service for API calls
 
 const LoginRegister: React.FC = () => {
@@ -19,6 +12,7 @@ const LoginRegister: React.FC = () => {
   const [role, setRole] = useState<'user' | 'admin'>('user'); // Default role for registration
   const [responseMessage, setResponseMessage] = useState('');
 
+  const history = useHistory();
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,12 +29,26 @@ const LoginRegister: React.FC = () => {
         response = await login(email, password);
         setResponseMessage('Login successful!');
         localStorage.setItem("token",response.token);
+        localStorage.setItem("role",response.data.role)
+        if(response.data.role == 'user'){
+          history.push('/user');
+        }
+        else{
+          history.push('/admin');
+        }
         console.log('Login Response:', response.data.role);
       } else {
         // Register API call with role
         response = await register(name, email, password, role);
         setResponseMessage('Registration successful!');
         localStorage.setItem("token",response.token);
+        localStorage.setItem("role",response.data.role)
+        if(response.data.role == 'user'){
+          history.push('/user');
+        }
+        else{
+          history.push('/admin');
+        }
         console.log('Register Response:', response.data.role);
       }
     } catch (error) {
