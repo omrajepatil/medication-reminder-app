@@ -6,7 +6,7 @@ const medicineRouter = Router();
 
 medicineRouter.post('/create',authMiddleware, createMedicine);
 
-medicineRouter.get('/get',authMiddleware,fetchAllMedicine);
+medicineRouter.get('/get/:id',authMiddleware,fetchAllMedicine);
 
 medicineRouter.put('/update/:id',authMiddleware,updateMedicine);
 

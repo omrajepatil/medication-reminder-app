@@ -13,7 +13,7 @@ const createToken = (id,role)=>{
 
 // Function to create a new user
 export const createUser = async (req, res) => {
-    const { name, email, password, role } = req.body;
+    const { name, email, password ,role} = req.body;
 
     try {
         // Validate input
@@ -69,7 +69,7 @@ export const login = async (req, res) => {
         if (!user) {
             return res.status(400).json({ message: `User with email ${email} not found.` });
         }
-        console.log('User Found:', user);
+        // console.log('User Found:', user);
 
         // Validate the password
         const isValidPassword = await bcrypt.compare(password, user.password);
@@ -85,7 +85,7 @@ export const login = async (req, res) => {
         const { id, name, role } = user;
         res.status(200).json({ 
             message: 'Logged in successfully', 
-            data: { id, name, email, role }, 
+            data: user, 
             token 
         });
     } catch (error) {

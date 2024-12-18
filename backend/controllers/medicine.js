@@ -19,15 +19,27 @@ export const createMedicine = async(req,res)=>{
 
 
 
-export const fetchAllMedicine = async(req,res)=>{
-    try{
-        const response = await Medicine.findAll();
-        res.status(200).json({status:true,message:"Medicine list",data:response})
+export const fetchAllMedicine = async (req, res) => {
+  try {
+    const { id } = req.params; // `id` here is the userId
+    if (!id) {
+      return res.status(400).json({ status: false, message: 'User ID is required' });
     }
-    catch(error){
-        res.json(400).json({status:false,message:"not fetching all data"});
+
+    // Fetch medicines where userId matches the provided ID
+    const medicines = await Medicine.findAll({ where: { userId: id } });
+
+    if (medicines.length === 0) {
+      return res.status(404).json({ status: false, message: 'No medicines found for this user' });
     }
-}
+
+    res.status(200).json({ status: true, message: 'Medicines fetched successfully', data: medicines });
+  } catch (error) {
+    console.error('Error while fetching medicines:', error);
+    res.status(500).json({ status: false, message: 'Server error', error: error.message });
+  }
+};
+
 
 
 
