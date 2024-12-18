@@ -45,9 +45,11 @@ const AdminTable: React.FC<AdminTableProps> = ({ data }) => {
   // Handle taken request
   const handleTaken = async (medicine: Medicine) => {
     try {
+
       const response = await logAcknowledgment(medicine.userId, medicine.id, 'Taken');  // Call logAcknowledgment API function
       if (response.status) {
         console.log('Acknowledgment logged successfully:', response.message);
+        alert("Mark ad taken")
       } else {
         console.error('Failed to log acknowledgment:', response.message);
       }
