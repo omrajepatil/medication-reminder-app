@@ -1,7 +1,7 @@
 # medication-reminder-app
 This project is a Medication Reminder App that helps users manage their medications by storing medication data and logging acknowledgment when medications are taken or skipped.
 
-Backend Setup
+# Backend Setup
 The backend is built with Node.js, Express.js, and Sequelize ORM to handle the app's API and data.
 
 1 . Clone the Repository
@@ -15,7 +15,7 @@ The backend is built with Node.js, Express.js, and Sequelize ORM to handle the a
     nodemon index.js
 
 
-Frontend Setup
+# Frontend Setup
 The frontend is built using React, Ionic components, and TypeScript for building a responsive user interface.
 
 1 . Clone the Repository
