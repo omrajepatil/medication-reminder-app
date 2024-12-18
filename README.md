@@ -12,7 +12,7 @@ The backend is built with **Node.js**, **Express.js**, and **Sequelize ORM** to 
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-repository.git
+   https://github.com/omrajepatil/medication-reminder-app.git
    cd backend
 2. **Install Dependencies Install the required dependencies for the backend.**
    ```bash
@@ -26,12 +26,12 @@ The backend is built with **Node.js**, **Express.js**, and **Sequelize ORM** to 
 ### Steps to Set Up the Frontend
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/your-repository.git
+    https://github.com/omrajepatil/medication-reminder-app.git
     cd frontend
 2. **Install Dependencies Install the required dependencies for the frontend.**
    ```bash
    npm install
-3. **tart the Frontend Server Use the following command**
+3. **Start the Frontend Server Use the following command**
    ```bash
    npm run dev
 
