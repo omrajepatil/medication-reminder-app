@@ -3,7 +3,8 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Login';
 import MedicalFormPage from './pages/medicine';
-import AdminPage from './pages/admin';
+import AdminPage from './pages/medicalTable';
+import AcknowledgmentPage from './pages/acknowledge';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -57,6 +58,9 @@ const App: React.FC = () => (
         <MedicalFormPage />
         </Route>
         <Route exact path="/admin">
+          <AcknowledgmentPage />
+        </Route>
+        <Route exact path="/medical-table">
           <AdminPage />
         </Route>
       </IonRouterOutlet>

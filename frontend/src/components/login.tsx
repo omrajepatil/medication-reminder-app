@@ -30,6 +30,8 @@ const LoginRegister: React.FC = () => {
         setResponseMessage('Login successful!');
         localStorage.setItem("token",response.token);
         localStorage.setItem("role",response.data.role)
+        localStorage.setItem("id",response.data.id)
+        
         if(response.data.role == 'user'){
           history.push('/user');
         }
@@ -43,6 +45,7 @@ const LoginRegister: React.FC = () => {
         setResponseMessage('Registration successful!');
         localStorage.setItem("token",response.token);
         localStorage.setItem("role",response.data.role)
+        localStorage.setItem("id",response.data.id)
         if(response.data.role == 'user'){
           history.push('/user');
         }
